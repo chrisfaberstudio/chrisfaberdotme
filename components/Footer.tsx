@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function Footer({ copyrightYear }: { copyrightYear: string }) {
   return (
-    <footer className="flex items-center justify-center gap-2 text-[10px] text-ink/40 font-mono tracking-wider">
+    <footer className="flex items-center justify-center gap-2 text-[10px] text-ink/40 font-mono tracking-widest uppercase">
       <span>© {copyrightYear} Chris Faber</span>
       <span aria-hidden>·</span>
       <Link
