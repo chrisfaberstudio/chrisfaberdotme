@@ -2,6 +2,10 @@
 studio/dist/
 studio/node_modules/
 
+# Preview scratch files (local only)
+preview.html
+preview-serve.js
+
 # Logs
 logs
 *.log

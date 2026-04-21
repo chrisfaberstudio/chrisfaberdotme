@@ -2,9 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "static server",
-      "runtimeExecutable": "C:/Users/cmrfa/AppData/Local/Logi/LogiPluginService/PluginHosts/node22/node/node.exe",
-      "runtimeArgs": ["serve.js"],
+      "name": "Next.js dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 3000
     }
   ]
