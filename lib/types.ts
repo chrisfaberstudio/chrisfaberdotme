@@ -19,7 +19,7 @@ export interface SanityImage {
 
 export type LocationCode = 'ULUWATU' | 'MUNICH'
 
-export type SocialPlatform = 'instagram' | 'threads' | 'linkedin' | 'email' | 'other'
+export type SocialPlatform = 'instagram' | 'threads' | 'linkedin' | 'email' | 'whatsapp' | 'other'
 
 export interface Social {
   _key: string

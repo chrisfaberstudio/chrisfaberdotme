@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Instagram, Linkedin, AtSign, Mail, Link, ArrowUpRight } from 'lucide-react'
+import { Instagram, Linkedin, AtSign, Mail, Link, Phone, ArrowUpRight } from 'lucide-react'
 import type { Social, SocialPlatform } from '@/lib/types'
 
 const ICONS: Record<SocialPlatform, LucideIcon> = {
@@ -7,6 +7,7 @@ const ICONS: Record<SocialPlatform, LucideIcon> = {
   threads: AtSign,
   linkedin: Linkedin,
   email: Mail,
+  whatsapp: Phone,
   other: Link,
 }
 

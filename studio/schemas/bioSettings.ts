@@ -76,6 +76,7 @@ export const bioSettings = defineType({
                   { title: 'Threads', value: 'threads' },
                   { title: 'LinkedIn', value: 'linkedin' },
                   { title: 'Email', value: 'email' },
+                  { title: 'WhatsApp', value: 'whatsapp' },
                   { title: 'Other', value: 'other' },
                 ],
               },
