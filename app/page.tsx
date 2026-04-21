@@ -8,6 +8,7 @@ import { LocationPill } from '@/components/LocationPill'
 import { Socials } from '@/components/Socials'
 import { Gallery } from '@/components/Gallery'
 import { Footer } from '@/components/Footer'
+import { MoreAboutButton } from '@/components/MoreAboutButton'
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch<BioSettings>(bioSettingsQuery)
@@ -112,12 +113,7 @@ export default async function Home() {
           >
             <PortableText value={settings.bio} components={bioComponents} />
             {settings?.about && settings.about.length > 0 && (
-              <a
-                href="#about"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono tracking-wider border border-ink/20 text-ink/60 rounded-full hover:border-ink/40 hover:text-ink/80 transition-colors duration-200"
-              >
-                More about me
-              </a>
+              <MoreAboutButton />
             )}
           </section>
         )}
