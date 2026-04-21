@@ -30,14 +30,24 @@ jobs:
 
       # Push the contents of out/ to the deploy branch.
       # Hostinger Auto Deploy points to this branch and serves from its root.
+      # We maintain proper git history so Hostinger can fast-forward with a plain git pull.
       - name: Push to deploy branch
         run: |
-          cd out
-          git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin
+          # Check out existing deploy branch, or create a new orphan one
+          if git show-ref --verify --quiet refs/remotes/origin/deploy; then
+            git checkout -B deploy origin/deploy
+          else
+            git checkout --orphan deploy
+          fi
+          # Move build output to a safe location before wiping the tree
+          cp -r out /tmp/deploy-out
+          # Clear everything tracked in this branch
+          git rm -rf . --quiet 2>/dev/null || true
+          # Copy the static build in
+          cp -r /tmp/deploy-out/. .
           git add -A
-          git commit -m "deploy: ${{ github.sha }}"
-          git push --force \
-            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
-            HEAD:deploy
+          git diff --cached --quiet || git commit -m "deploy: ${{ github.sha }}"
+          git push origin deploy
