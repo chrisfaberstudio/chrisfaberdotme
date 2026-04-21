@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity'
 import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
+import { CaptionInput } from '../components/CaptionInput'
 
 export const galleryItem = defineType({
   name: 'galleryItem',
@@ -19,7 +20,8 @@ export const galleryItem = defineType({
       name: 'caption',
       title: 'Caption',
       type: 'string',
-      description: 'Optional caption displayed below the image.',
+      description: 'Defaults to the image filename. You can edit or clear it.',
+      components: { input: CaptionInput },
     }),
     defineField({
       name: 'visible',
