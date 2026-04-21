@@ -36,6 +36,7 @@ export interface SEO {
 
 export interface BioSettings {
   name: string
+  siteTitle?: string
   role: string
   portrait: SanityImage
   bio: Array<{ _type: string; [key: string]: unknown }>

@@ -1,5 +1,6 @@
 export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   name,
+  siteTitle,
   role,
   portrait,
   bio,

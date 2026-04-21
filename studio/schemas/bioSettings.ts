@@ -9,6 +9,12 @@ export const bioSettings = defineType({
 
   fields: [
     defineField({ name: 'name', title: 'Name', type: 'string', validation: (R) => R.required() }),
+    defineField({
+      name: 'siteTitle',
+      title: 'Site Title',
+      type: 'string',
+      description: 'Text shown in the browser tab. Defaults to Name if left empty.',
+    }),
     defineField({ name: 'role', title: 'Role', type: 'string', validation: (R) => R.required() }),
 
     defineField({
