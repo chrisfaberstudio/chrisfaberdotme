@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[877],{2517:(e,u,r)=>{Promise.resolve().then(r.bind(r,8168))},8168:(e,u,r)=>{"use strict";r.r(u),r.d(u,{default:()=>a});var s=r(2115),t=r(7260);function a(){let e=(0,t.useRouter)();return(0,s.useEffect)(()=>{e.replace("/dataprivacy")},[e]),null}}},e=>{e.O(0,[441,255,358],()=>e(e.s=2517)),_N_E=e.O()}]);
