@@ -11,7 +11,7 @@ html {
   background-color: var(--bg);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
-
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes fade-up {
