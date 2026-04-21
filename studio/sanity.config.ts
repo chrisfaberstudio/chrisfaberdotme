@@ -4,8 +4,8 @@ import { visionTool } from '@sanity/vision'
 import { schemas } from './schemas'
 
 export default defineConfig({
-  name: 'chrisfaberdotme-cms',
-  title: 'chrisfaberdotme CMS',
+  name: 'chrisfaberme',
+  title: 'ChrisFaber\u25CFme',
   projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
   dataset: process.env.SANITY_STUDIO_DATASET ?? 'production',
 
