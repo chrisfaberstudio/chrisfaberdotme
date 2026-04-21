@@ -122,7 +122,22 @@ export const bioSettings = defineType({
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
             ],
-            annotations: [],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  defineField({ name: 'href', type: 'url', title: 'URL' }),
+                  defineField({
+                    name: 'blank',
+                    type: 'boolean',
+                    title: 'Open in new tab',
+                    initialValue: true,
+                  }),
+                ],
+              },
+            ],
           },
         },
       ],

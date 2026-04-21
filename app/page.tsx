@@ -43,6 +43,16 @@ const aboutComponents = {
       <strong className="font-medium text-ink">{children}</strong>
     ),
     em: ({ children }: { children?: import('react').ReactNode }) => <em>{children}</em>,
+    link: ({ value, children }: { value?: { href?: string; blank?: boolean }; children?: import('react').ReactNode }) => (
+      <a
+        href={value?.href}
+        target={value?.blank ? '_blank' : undefined}
+        rel="noopener noreferrer"
+        className="underline underline-offset-2 text-ink hover:text-ink/60 transition-colors duration-200"
+      >
+        {children}
+      </a>
+    ),
   },
 }
 
