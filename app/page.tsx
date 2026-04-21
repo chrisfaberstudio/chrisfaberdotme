@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: settings?.seo?.title ?? settings?.name ?? 'Chris Faber',
     description: settings?.seo?.description ?? '',
     openGraph: settings?.seo?.ogImage
-      ? { images: [{ url: urlFor(settings.seo.ogImage).width(1200).height(630).auto('format').url() }] }
+      ? { images: [{ url: urlFor(settings.seo.ogImage)?.width(1200).height(630).auto('format').url() ?? '' }] }
       : undefined,
   }
 }

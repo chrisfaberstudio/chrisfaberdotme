@@ -19,7 +19,8 @@ export function Gallery({ items }: { items: GalleryItem[] }) {
         style={{ scrollSnapType: 'x mandatory' }}
       >
         {items.map((item) => {
-          const src = urlFor(item.image).width(440).height(440).auto('format').fit('crop').url()
+          const src = urlFor(item.image)?.width(440).height(440).auto('format').fit('crop').url() ?? ''
+          if (!src) return null
           return (
             <li
               key={item._id}

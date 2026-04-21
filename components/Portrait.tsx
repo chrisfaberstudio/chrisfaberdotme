@@ -8,7 +8,8 @@ interface PortraitProps {
 }
 
 export function Portrait({ image, name }: PortraitProps) {
-  const src = urlFor(image).width(224).height(224).auto('format').fit('crop').url()
+  const src = urlFor(image)?.width(224).height(224).auto('format').fit('crop').url()
+  if (!src) return null
 
   return (
     <div className="w-24 h-24 rounded-full overflow-hidden ring-1 ring-ink/10 shrink-0">
