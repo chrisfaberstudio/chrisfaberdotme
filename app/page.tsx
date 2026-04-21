@@ -72,7 +72,7 @@ export default async function Home() {
         {/* Bio */}
         {settings?.bio && (
           <section
-            className="animate-fade-up text-sm font-mono max-w-[34ch] mx-auto"
+            className="animate-fade-up text-sm font-mono max-w-[34ch] mx-auto text-center"
             style={{ animationDelay: '80ms' }}
           >
             <PortableText value={settings.bio} components={bioComponents} />
