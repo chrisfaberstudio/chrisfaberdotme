@@ -107,10 +107,18 @@ export default async function Home() {
         {/* Bio */}
         {settings?.bio && (
           <section
-            className="animate-fade-up text-sm font-mono max-w-[44ch] mx-auto text-center"
+            className="animate-fade-up flex flex-col items-center gap-4 text-sm font-mono max-w-[44ch] mx-auto text-center"
             style={{ animationDelay: '80ms' }}
           >
             <PortableText value={settings.bio} components={bioComponents} />
+            {settings?.about && settings.about.length > 0 && (
+              <a
+                href="#about"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono tracking-wider border border-ink/20 text-ink/60 rounded-full hover:border-ink/40 hover:text-ink/80 transition-colors duration-200"
+              >
+                More about me
+              </a>
+            )}
           </section>
         )}
 
@@ -137,7 +145,8 @@ export default async function Home() {
         {/* About */}
         {settings?.about && settings.about.length > 0 && (
           <section
-            className="animate-fade-up w-full text-sm font-mono"
+            id="about"
+            className="animate-fade-up w-full text-sm font-mono scroll-mt-16"
             style={{ animationDelay: '320ms' }}
           >
             <PortableText value={settings.about} components={aboutComponents} />
