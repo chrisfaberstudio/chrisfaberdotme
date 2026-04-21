@@ -12,9 +12,7 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   seo
 }`
 
-export const galleryItemsQuery = `*[_type == "galleryItem" && visible == true] | order(date desc) [0...8] {
+export const galleryItemsQuery = `*[_type == "galleryItem" && visible == true] [0...8] {
   _id,
-  image,
-  caption,
-  date
+  image
 }`

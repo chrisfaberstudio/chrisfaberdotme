@@ -11,20 +11,15 @@ export function Gallery({ items }: { items: GalleryItem[] }) {
         const src = urlFor(item.image)?.width(800).auto('format').url() ?? ''
         if (!src) return null
         return (
-          <figure key={item._id} className="min-w-0">
+          <div key={item._id} className="min-w-0">
             <Image
               src={src}
-              alt={item.caption ?? ''}
+              alt=""
               width={800}
               height={800}
               className="w-full h-auto object-cover"
             />
-            {item.caption && (
-              <figcaption className="mt-1.5 font-mono text-[10px] text-ink/40 tracking-widest uppercase">
-                {item.caption}
-              </figcaption>
-            )}
-          </figure>
+          </div>
         )
       })}
     </div>
