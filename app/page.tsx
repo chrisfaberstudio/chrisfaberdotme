@@ -108,14 +108,21 @@ export default async function Home() {
         {/* Bio */}
         {settings?.bio && (
           <section
-            className="animate-fade-up flex flex-col items-center gap-4 text-sm font-mono max-w-[44ch] mx-auto text-center"
+            className="animate-fade-up text-sm font-mono max-w-[44ch] mx-auto text-center"
             style={{ animationDelay: '80ms' }}
           >
             <PortableText value={settings.bio} components={bioComponents} />
-            {settings?.about && settings.about.length > 0 && (
-              <MoreAboutButton />
-            )}
           </section>
+        )}
+
+        {/* More about me */}
+        {settings?.about && settings.about.length > 0 && (
+          <div
+            className="animate-fade-up flex justify-center"
+            style={{ animationDelay: '120ms' }}
+          >
+            <MoreAboutButton />
+          </div>
         )}
 
         {/* Socials */}
