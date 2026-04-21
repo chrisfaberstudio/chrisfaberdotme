@@ -47,8 +47,10 @@ jobs:
           fi
           # Move build output to a safe location before wiping the tree
           cp -r out /tmp/deploy-out
-          # Clear everything tracked in this branch
+          # Clear all tracked files
           git rm -rf . --quiet 2>/dev/null || true
+          # Remove ALL untracked files too (node_modules, .next, etc.)
+          git clean -fdx --quiet
           # Copy the static build in
           cp -r /tmp/deploy-out/. .
           git add -A
