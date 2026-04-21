@@ -27,7 +27,7 @@ export function Socials({ socials }: { socials: Social[] }) {
               className="group flex items-center gap-3 w-full min-h-[56px] px-4 border border-ink/20 text-ink/70 hover:border-ink hover:bg-ink hover:text-bg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               <Icon size={16} strokeWidth={1.5} className="shrink-0" />
-              <span className="flex-1 text-sm font-mono tracking-wider">{social.label}</span>
+              <span className="flex-1 text-xs font-mono tracking-widest uppercase">{social.label}</span>
               <ArrowUpRight
                 size={14}
                 strokeWidth={1.5}

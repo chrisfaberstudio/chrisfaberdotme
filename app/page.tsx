@@ -60,7 +60,7 @@ export default async function Home() {
             <h1 className="font-display text-[1.75rem] font-bold text-ink leading-tight">
               {settings?.name}
             </h1>
-            <p className="text-sm text-ink/60 mt-1 font-mono tracking-wider">
+            <p className="text-xs text-ink/60 mt-1 font-mono tracking-widest uppercase">
               {settings?.role}
             </p>
           </div>
