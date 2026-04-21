@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const bioComponents = {
   block: {
     normal: ({ children }: { children?: import('react').ReactNode }) => (
-      <p className="mb-3 last:mb-0 text-ink/70 leading-relaxed">{children}</p>
+      <p className="mb-3 last:mb-0 text-ink/70 leading-relaxed text-center">{children}</p>
     ),
   },
   marks: {
