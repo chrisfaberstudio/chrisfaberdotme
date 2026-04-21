@@ -145,7 +145,48 @@ export const bioSettings = defineType({
       ],
     }),
 
-    defineField({ name: 'imprint', title: 'Imprint', type: 'text', rows: 6 }),
+    defineField({
+      name: 'imprint',
+      title: 'Imprint',
+      description: 'Legal imprint shown on the Imprint page. Highlight text and click the link icon to add links.',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Heading', value: 'h2' },
+            { title: 'Subheading', value: 'h3' },
+          ],
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  defineField({ name: 'href', type: 'url', title: 'URL' }),
+                  defineField({
+                    name: 'blank',
+                    type: 'boolean',
+                    title: 'Open in new tab',
+                    initialValue: true,
+                  }),
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    }),
     defineField({
       name: 'dataPrivacy',
       title: 'Dataprivacy',
