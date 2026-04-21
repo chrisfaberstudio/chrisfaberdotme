@@ -25,7 +25,7 @@ export function Socials({ socials }: { socials: Social[] }) {
               href={href}
               target={isEmail ? undefined : '_blank'}
               rel={isEmail ? undefined : 'noopener noreferrer'}
-              className="group flex items-center gap-3 w-full min-h-[56px] px-4 border border-ink/20 text-ink/70 hover:border-ink hover:bg-ink hover:text-bg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="group flex items-center gap-3 w-full min-h-[56px] px-4 border border-ink/20 text-ink/70 hover:border-ink hover:bg-ink hover:text-bg active:border-ink active:bg-ink active:text-bg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               <Icon size={16} strokeWidth={1.5} className="shrink-0" />
               <span className="flex-1 text-xs font-mono tracking-widest uppercase">{social.label}</span>
