@@ -95,9 +95,6 @@ export default async function Home() {
             className="animate-fade-up w-full"
             style={{ animationDelay: '240ms' }}
           >
-            <p className="text-[10px] uppercase tracking-widest text-ink/40 mb-4 font-mono">
-              Currently
-            </p>
             <Gallery items={gallery} />
           </section>
         )}
