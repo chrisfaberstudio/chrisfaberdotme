@@ -4,22 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Dev Server
 
-Start the local server (runs on port 3000):
-
 ```bash
-python3 -m http.server 3000
+npm install        # first time only
+npm run dev        # Next.js at localhost:3000
+
+cd studio && npm install && npm run dev   # Sanity Studio at localhost:3333
 ```
 
-This is configured in `.claude/launch.json`. There is no build step, no package manager, and no dependencies to install.
+No Python server. `serve.js` and `index.html` are legacy artifacts from before the Next.js scaffold — ignore them.
+
+## Build & Deploy
+
+```bash
+npm run build      # produces out/ — the static export
+npm run seed       # populate Sanity with placeholder content (needs .env.local)
+```
+
+GitHub Actions (`.github/workflows/deploy.yml`) runs `npm run build` on push to `main` and force-pushes the `out/` contents to the `deploy` branch. Hostinger Auto Deploy serves from that branch.
 
 ## Architecture
 
-This is a pure static HTML site — a single [`index.html`](index.html) with all CSS embedded inline. No frameworks, no JavaScript, no external stylesheets beyond Google Fonts.
+**Next.js 15 App Router with `output: 'export'`** — fully static. No server runtime at deploy time.
 
-Key design details:
-- Typography: Lato 900 for the wordmark, Roboto Mono for body/footer text
-- Fluid font sizing via `clamp()` (e.g. `clamp(2rem, 8vw, 5rem)`)
-- Color scheme: `#f2f2f2` background, `#1a1a1a` text, `#666` muted text
-- Layout: full-viewport flexbox centered container
+- `app/` — pages and layout (server components; data fetching at build time via Sanity client)
+- `components/` — UI components; `LocationPill` is the only client component (`'use client'`)
+- `lib/` — Sanity client, image URL builder, GROQ queries, TypeScript types, location hook
+- `studio/` — standalone Sanity Studio v3 (separate `package.json`, React 18, port 3333)
+- `scripts/seed.ts` — run once to populate Sanity with placeholder content
 
-The `.gitignore` includes patterns for Node/Next.js/Nuxt/Vite, anticipating a potential future framework migration.
+## Design Tokens
+
+All values come from `chrisfaber.studio` — see `docs/tokens.md` for the full extraction. Never hardcode hex values in components.
+
+- Colors: `bg` (#f2f2f2) and `ink` (#1a1a1a) with Tailwind opacity modifiers (`ink/60`, etc.)
+- Fonts: `font-mono` (Roboto Mono, body default), `font-display` (Lato 700, headings), `font-sans` (Inter, UI)
+- No dark mode — light-only, matching the studio
+
+## Key constraints
+
+- `output: 'export'` means no API routes, no middleware, no runtime `cookies()`/`headers()`. All Sanity queries run at build time in async server components.
+- `images: { unoptimized: true }` — Next.js image optimization is disabled; Sanity's CDN handles sizing via `urlFor().width().height().auto('format').url()`.
+- `LocationPill` uses `useState('--:--')` as SSR placeholder and fills in the real time via `useEffect` to avoid hydration mismatches.
+- The `deploy` branch is machine-managed by GitHub Actions — never commit to it manually.
+
+## Environment Variables
+
+Copy `.env.example` → `.env.local`. Required to run dev or build:
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET`
+
+Required only for seeding:
+- `SANITY_API_WRITE_TOKEN`

@@ -1,3 +1,7 @@
+# Sanity Studio build output
+studio/dist/
+studio/node_modules/
+
 # Logs
 logs
 *.log
