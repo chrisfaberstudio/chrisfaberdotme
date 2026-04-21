@@ -1,6 +1,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { schemas } from './schemas'
 
 export default defineConfig({
@@ -11,7 +12,7 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure: (S) =>
+      structure: (S, context) =>
         S.list()
           .title('Content')
           .items([
@@ -24,9 +25,7 @@ export default defineConfig({
                   .documentId('bioSettings')
               ),
             S.divider(),
-            ...S.documentTypeListItems().filter(
-              (item) => item.getId() !== 'bioSettings'
-            ),
+            orderableDocumentListDeskItem({ type: 'galleryItem', title: 'Gallery', S, context }),
           ]),
     }),
     visionTool(),
