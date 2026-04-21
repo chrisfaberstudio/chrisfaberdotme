@@ -28,24 +28,18 @@ export interface Social {
   label: string
 }
 
-export interface SEO {
-  title?: string
-  description?: string
-  ogImage?: SanityImage
-}
-
 export interface BioSettings {
   name: string
   siteTitle?: string
   role: string
   portrait: SanityImage
   bio: Array<{ _type: string; [key: string]: unknown }>
+  about?: Array<{ _type: string; [key: string]: unknown }>
   locationCode: LocationCode
   socials: Social[]
   imprint: string
   dataPrivacy: string
   copyrightYear: string
-  seo?: SEO
 }
 
 export interface GalleryItem {

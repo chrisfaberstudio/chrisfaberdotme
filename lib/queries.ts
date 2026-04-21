@@ -6,10 +6,10 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   bio,
   locationCode,
   socials,
+  about,
   imprint,
   dataPrivacy,
-  copyrightYear,
-  seo
+  copyrightYear
 }`
 
 export const galleryItemsQuery = `*[_type == "galleryItem" && visible == true] | order(orderRank asc) [0...8] {

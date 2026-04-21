@@ -101,6 +101,33 @@ export const bioSettings = defineType({
       ],
     }),
 
+    defineField({
+      name: 'about',
+      title: 'About',
+      description: 'Longer about section displayed below the gallery on the main page.',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Heading', value: 'h2' },
+          ],
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: [],
+          },
+        },
+      ],
+    }),
+
     defineField({ name: 'imprint', title: 'Imprint', type: 'text', rows: 6 }),
     defineField({ name: 'dataPrivacy', title: 'Data Privacy', type: 'text', rows: 8 }),
     defineField({
@@ -110,16 +137,6 @@ export const bioSettings = defineType({
       initialValue: () => new Date().getFullYear().toString(),
     }),
 
-    defineField({
-      name: 'seo',
-      title: 'SEO',
-      type: 'object',
-      fields: [
-        defineField({ name: 'title', type: 'string', title: 'Title' }),
-        defineField({ name: 'description', type: 'text', title: 'Description', rows: 3 }),
-        defineField({ name: 'ogImage', type: 'image', title: 'OG Image', options: { hotspot: true } }),
-      ],
-    }),
   ],
 
   preview: {

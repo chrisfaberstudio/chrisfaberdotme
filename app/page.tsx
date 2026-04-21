@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { PortableText } from '@portabletext/react'
 import { sanityFetch } from '@/lib/sanity'
-import { urlFor } from '@/lib/sanityImage'
 import { bioSettingsQuery, galleryItemsQuery } from '@/lib/queries'
 import type { BioSettings, GalleryItem } from '@/lib/types'
 import { Portrait } from '@/components/Portrait'
@@ -13,12 +12,38 @@ import { Footer } from '@/components/Footer'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch<BioSettings>(bioSettingsQuery)
   return {
-    title: settings?.siteTitle ?? settings?.seo?.title ?? settings?.name ?? 'Chris Faber',
-    description: settings?.seo?.description ?? '',
-    openGraph: settings?.seo?.ogImage
-      ? { images: [{ url: urlFor(settings.seo.ogImage)?.width(1200).height(630).auto('format').url() ?? '' }] }
-      : undefined,
+    title: settings?.siteTitle ?? settings?.name ?? 'Chris Faber',
+    description: '',
   }
+}
+
+const aboutComponents = {
+  block: {
+    normal: ({ children }: { children?: import('react').ReactNode }) => (
+      <p className="mb-4 last:mb-0 text-ink/70 leading-relaxed">{children}</p>
+    ),
+    h2: ({ children }: { children?: import('react').ReactNode }) => (
+      <h2 className="font-display text-lg font-bold text-ink mt-8 mb-3 first:mt-0">{children}</h2>
+    ),
+  },
+  list: {
+    bullet: ({ children }: { children?: import('react').ReactNode }) => (
+      <ul className="list-disc list-outside pl-4 mb-4 space-y-1 text-ink/70">{children}</ul>
+    ),
+    number: ({ children }: { children?: import('react').ReactNode }) => (
+      <ol className="list-decimal list-outside pl-4 mb-4 space-y-1 text-ink/70">{children}</ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }: { children?: import('react').ReactNode }) => <li>{children}</li>,
+    number: ({ children }: { children?: import('react').ReactNode }) => <li>{children}</li>,
+  },
+  marks: {
+    strong: ({ children }: { children?: import('react').ReactNode }) => (
+      <strong className="font-medium text-ink">{children}</strong>
+    ),
+    em: ({ children }: { children?: import('react').ReactNode }) => <em>{children}</em>,
+  },
 }
 
 const bioComponents = {
@@ -89,7 +114,7 @@ export default async function Home() {
           </section>
         )}
 
-        {/* Currently */}
+        {/* Gallery */}
         {gallery && gallery.length > 0 && (
           <section
             className="animate-fade-up w-full"
@@ -99,8 +124,18 @@ export default async function Home() {
           </section>
         )}
 
+        {/* About */}
+        {settings?.about && settings.about.length > 0 && (
+          <section
+            className="animate-fade-up w-full text-sm font-mono"
+            style={{ animationDelay: '320ms' }}
+          >
+            <PortableText value={settings.about} components={aboutComponents} />
+          </section>
+        )}
+
         {/* Footer */}
-        <div className="animate-fade-up" style={{ animationDelay: '320ms' }}>
+        <div className="animate-fade-up" style={{ animationDelay: '400ms' }}>
           <Footer copyrightYear={settings?.copyrightYear ?? '2025'} />
         </div>
 
