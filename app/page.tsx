@@ -92,17 +92,17 @@ export default async function Home() {
           {settings?.portrait && (
             <Portrait image={settings.portrait} name={settings.name} />
           )}
-          <div>
-            <h1 className="font-display text-[1.75rem] font-bold text-ink leading-tight">
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="font-display text-[1.75rem] font-black text-ink leading-tight">
               {settings?.name}
             </h1>
-            <p className="text-xs text-ink/60 mt-1 font-mono tracking-widest uppercase">
+            <p className="text-xs text-ink/60 font-mono tracking-widest uppercase">
               {settings?.role}
             </p>
+            {settings?.locationCode && (
+              <LocationPill code={settings.locationCode} />
+            )}
           </div>
-          {settings?.locationCode && (
-            <LocationPill code={settings.locationCode} />
-          )}
         </header>
 
         {/* Bio */}
