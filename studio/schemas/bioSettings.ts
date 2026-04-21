@@ -146,7 +146,8 @@ export const bioSettings = defineType({
     defineField({ name: 'imprint', title: 'Imprint', type: 'text', rows: 6 }),
     defineField({
       name: 'dataPrivacy',
-      title: 'Data Privacy',
+      title: 'Dataprivacy',
+      description: 'Privacy policy shown on the Dataprivacy page. Highlight text and click the link icon to add links.',
       type: 'array',
       of: [
         {
