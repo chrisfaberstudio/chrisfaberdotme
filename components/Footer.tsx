@@ -7,7 +7,7 @@ export function Footer({ copyrightYear }: { copyrightYear: string }) {
         href="/privacy"
         className="hover:text-ink/70 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
       >
-        Data Privacy
+        Dataprivacy
       </Link>
       <Link
         href="/imprint"

@@ -4,7 +4,7 @@ import { sanityFetch } from '@/lib/sanity'
 import { bioSettingsQuery } from '@/lib/queries'
 import type { BioSettings } from '@/lib/types'
 
-export const metadata: Metadata = { title: 'Data Privacy' }
+export const metadata: Metadata = { title: 'Dataprivacy' }
 
 export default async function PrivacyPage() {
   const settings = await sanityFetch<BioSettings>(bioSettingsQuery)
@@ -21,7 +21,7 @@ export default async function PrivacyPage() {
         >
           ← Back
         </Link>
-        <h1 className="font-display text-[1.75rem] font-bold mt-8 mb-6">Data Privacy</h1>
+        <h1 className="font-display text-[1.75rem] font-bold mt-8 mb-6">Dataprivacy</h1>
         <div className="text-sm text-ink/70 font-mono leading-relaxed whitespace-pre-wrap">
           {settings?.dataPrivacy}
         </div>
