@@ -84,7 +84,8 @@ export const bioSettings = defineType({
             }),
             defineField({
               name: 'url',
-              title: 'URL or Email Address',
+              title: 'Link',
+              description: 'URL (https://…), email address, or for WhatsApp: https://wa.me/YOURNUMBER (e.g. https://wa.me/491234567890)',
               type: 'string',
               validation: (R) => R.required(),
             }),
