@@ -158,7 +158,7 @@ export default async function Home() {
 
         {/* Footer */}
         <div className="animate-fade-up" style={{ animationDelay: '400ms' }}>
-          <Footer copyrightYear={settings?.copyrightYear ?? '2025'} />
+          <Footer />
         </div>
 
       </div>

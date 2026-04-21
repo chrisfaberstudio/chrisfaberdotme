@@ -229,13 +229,6 @@ export const bioSettings = defineType({
         },
       ],
     }),
-    defineField({
-      name: 'copyrightYear',
-      title: 'Copyright Year',
-      type: 'string',
-      initialValue: () => new Date().getFullYear().toString(),
-    }),
-
   ],
 
   preview: {

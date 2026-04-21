@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export function Footer({ copyrightYear }: { copyrightYear: string }) {
+export function Footer() {
   return (
     <footer className="flex items-center justify-center gap-2 text-[10px] text-ink/40 font-mono tracking-widest uppercase">
       <Link
@@ -15,7 +15,7 @@ export function Footer({ copyrightYear }: { copyrightYear: string }) {
       >
         Imprint
       </Link>
-      <span>© {copyrightYear}</span>
+      <span>© {new Date().getFullYear()}</span>
     </footer>
   )
 }

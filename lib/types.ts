@@ -39,8 +39,8 @@ export interface BioSettings {
   socials: Social[]
   imprint?: Array<{ _type: string; [key: string]: unknown }>
   dataPrivacy?: Array<{ _type: string; [key: string]: unknown }>
-  copyrightYear: string
 }
+
 
 export interface GalleryItem {
   _id: string
