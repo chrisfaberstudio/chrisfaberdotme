@@ -144,7 +144,47 @@ export const bioSettings = defineType({
     }),
 
     defineField({ name: 'imprint', title: 'Imprint', type: 'text', rows: 6 }),
-    defineField({ name: 'dataPrivacy', title: 'Data Privacy', type: 'text', rows: 8 }),
+    defineField({
+      name: 'dataPrivacy',
+      title: 'Data Privacy',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Heading', value: 'h2' },
+            { title: 'Subheading', value: 'h3' },
+          ],
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  defineField({ name: 'href', type: 'url', title: 'URL' }),
+                  defineField({
+                    name: 'blank',
+                    type: 'boolean',
+                    title: 'Open in new tab',
+                    initialValue: true,
+                  }),
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    }),
     defineField({
       name: 'copyrightYear',
       title: 'Copyright Year',

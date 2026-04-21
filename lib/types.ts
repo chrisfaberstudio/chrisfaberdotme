@@ -38,7 +38,7 @@ export interface BioSettings {
   locationCode: LocationCode
   socials: Social[]
   imprint: string
-  dataPrivacy: string
+  dataPrivacy?: Array<{ _type: string; [key: string]: unknown }>
   copyrightYear: string
 }
 
