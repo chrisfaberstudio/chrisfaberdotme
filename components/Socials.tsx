@@ -1,8 +1,8 @@
-import type { ComponentType } from 'react'
+import type { LucideIcon } from 'lucide-react'
 import { Instagram, Linkedin, AtSign, Mail, Link, ArrowUpRight } from 'lucide-react'
 import type { Social, SocialPlatform } from '@/lib/types'
 
-const ICONS: Record<SocialPlatform, ComponentType<{ size?: number; strokeWidth?: number }>> = {
+const ICONS: Record<SocialPlatform, LucideIcon> = {
   instagram: Instagram,
   threads: AtSign,
   linkedin: Linkedin,

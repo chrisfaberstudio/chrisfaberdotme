@@ -38,7 +38,7 @@ export interface BioSettings {
   name: string
   role: string
   portrait: SanityImage
-  bio: unknown[]
+  bio: Array<{ _type: string; [key: string]: unknown }>
   locationCode: LocationCode
   socials: Social[]
   imprint: string

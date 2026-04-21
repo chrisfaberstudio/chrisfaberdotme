@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { PortableText } from '@portabletext/react'
-import { client } from '@/lib/sanity'
+import { sanityFetch } from '@/lib/sanity'
 import { urlFor } from '@/lib/sanityImage'
 import { bioSettingsQuery, galleryItemsQuery } from '@/lib/queries'
 import type { BioSettings, GalleryItem } from '@/lib/types'
@@ -11,7 +11,7 @@ import { Gallery } from '@/components/Gallery'
 import { Footer } from '@/components/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await client.fetch<BioSettings>(bioSettingsQuery)
+  const settings = await sanityFetch<BioSettings>(bioSettingsQuery)
   return {
     title: settings?.seo?.title ?? settings?.name ?? 'Chris Faber',
     description: settings?.seo?.description ?? '',
@@ -37,8 +37,8 @@ const bioComponents = {
 
 export default async function Home() {
   const [settings, gallery] = await Promise.all([
-    client.fetch<BioSettings>(bioSettingsQuery),
-    client.fetch<GalleryItem[]>(galleryItemsQuery),
+    sanityFetch<BioSettings>(bioSettingsQuery),
+    sanityFetch<GalleryItem[]>(galleryItemsQuery),
   ])
 
   return (
@@ -80,7 +80,7 @@ export default async function Home() {
         )}
 
         {/* Socials */}
-        {settings?.socials?.length > 0 && (
+        {settings?.socials && settings.socials.length > 0 && (
           <section
             className="animate-fade-up w-full"
             style={{ animationDelay: '160ms' }}
@@ -90,7 +90,7 @@ export default async function Home() {
         )}
 
         {/* Currently */}
-        {gallery?.length > 0 && (
+        {gallery && gallery.length > 0 && (
           <section
             className="animate-fade-up w-full"
             style={{ animationDelay: '240ms' }}

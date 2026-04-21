@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { client } from '@/lib/sanity'
+import { sanityFetch } from '@/lib/sanity'
 import { bioSettingsQuery } from '@/lib/queries'
 import type { BioSettings } from '@/lib/types'
 
 export const metadata: Metadata = { title: 'Imprint' }
 
 export default async function ImprintPage() {
-  const settings = await client.fetch<BioSettings>(bioSettingsQuery)
+  const settings = await sanityFetch<BioSettings>(bioSettingsQuery)
 
   return (
     <main
