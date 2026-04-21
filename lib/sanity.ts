@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const projectId = (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '').trim()
 
 export const client = projectId
   ? createClient({
