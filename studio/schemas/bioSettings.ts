@@ -105,8 +105,50 @@ export const bioSettings = defineType({
 
     defineField({
       name: 'about',
-      title: 'About',
-      description: 'Longer about section displayed below the gallery on the main page.',
+      title: 'About 1',
+      description: 'Longer about section displayed below Gallery 1 on the main page.',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Heading', value: 'h2' },
+          ],
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  defineField({ name: 'href', type: 'url', title: 'URL' }),
+                  defineField({
+                    name: 'blank',
+                    type: 'boolean',
+                    title: 'Open in new tab',
+                    initialValue: true,
+                  }),
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'about2',
+      title: 'About 2',
+      description: 'Longer about section displayed below Gallery 2 on the main page.',
       type: 'array',
       of: [
         {

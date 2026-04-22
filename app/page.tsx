@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { PortableText } from '@portabletext/react'
 import { sanityFetch } from '@/lib/sanity'
-import { bioSettingsQuery, galleryItemsQuery } from '@/lib/queries'
+import { bioSettingsQuery, galleryItemsQuery, gallery2ItemsQuery } from '@/lib/queries'
 import type { BioSettings, GalleryItem } from '@/lib/types'
 import { Portrait } from '@/components/Portrait'
 import { LocationPill } from '@/components/LocationPill'
@@ -72,9 +72,10 @@ const bioComponents = {
 }
 
 export default async function Home() {
-  const [settings, gallery] = await Promise.all([
+  const [settings, gallery, gallery2] = await Promise.all([
     sanityFetch<BioSettings>(bioSettingsQuery),
     sanityFetch<GalleryItem[]>(galleryItemsQuery),
+    sanityFetch<GalleryItem[]>(gallery2ItemsQuery),
   ])
 
   return (
@@ -145,7 +146,7 @@ export default async function Home() {
           </section>
         )}
 
-        {/* About */}
+        {/* About 1 */}
         {settings?.about && settings.about.length > 0 && (
           <section
             id="about"
@@ -153,6 +154,26 @@ export default async function Home() {
             style={{ animationDelay: '320ms' }}
           >
             <PortableText value={settings.about} components={aboutComponents} />
+          </section>
+        )}
+
+        {/* Gallery 2 */}
+        {gallery2 && gallery2.length > 0 && (
+          <section
+            className="animate-fade-up w-full"
+            style={{ animationDelay: '360ms' }}
+          >
+            <Gallery items={gallery2} />
+          </section>
+        )}
+
+        {/* About 2 */}
+        {settings?.about2 && settings.about2.length > 0 && (
+          <section
+            className="animate-fade-up w-full text-sm font-mono"
+            style={{ animationDelay: '400ms' }}
+          >
+            <PortableText value={settings.about2} components={aboutComponents} />
           </section>
         )}
 

@@ -35,6 +35,7 @@ export interface BioSettings {
   portrait: SanityImage
   bio: Array<{ _type: string; [key: string]: unknown }>
   about?: Array<{ _type: string; [key: string]: unknown }>
+  about2?: Array<{ _type: string; [key: string]: unknown }>
   locationCode: LocationCode
   socials: Social[]
   imprint?: Array<{ _type: string; [key: string]: unknown }>

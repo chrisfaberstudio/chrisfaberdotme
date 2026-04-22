@@ -25,7 +25,8 @@ export default defineConfig({
                   .documentId('bioSettings')
               ),
             S.divider(),
-            orderableDocumentListDeskItem({ type: 'galleryItem', title: 'Gallery', S, context }),
+            orderableDocumentListDeskItem({ type: 'galleryItem', title: 'Gallery 1', S, context }),
+            orderableDocumentListDeskItem({ type: 'galleryItem2', title: 'Gallery 2', S, context }),
           ]),
     }),
     visionTool(),
