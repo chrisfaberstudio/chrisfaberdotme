@@ -1,13 +1,37 @@
 import type { LucideIcon } from 'lucide-react'
-import { Instagram, Linkedin, AtSign, Mail, Link, Phone, ArrowUpRight } from 'lucide-react'
+import { Instagram, Linkedin, AtSign, Mail, Link, Video, ArrowUpRight } from 'lucide-react'
 import type { Social, SocialPlatform } from '@/lib/types'
 
-const ICONS: Record<SocialPlatform, LucideIcon> = {
+function WhatsAppIcon({ size = 16, strokeWidth = 1.5, className }: { size?: number; strokeWidth?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      {/* Speech bubble with tail at bottom-left — WhatsApp outer shape */}
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+      {/* Phone receiver inside bubble */}
+      <path d="M15.1 14.9c-.3.5-.8 1.1-1.4 1.2-.6.1-1.1-.1-2.5-.7-1.5-.6-2.8-2.4-3-2.6-.2-.2-1.3-1.7-1.3-3.2 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4.1.6.6l.7 1.6c.1.2.1.5 0 .7-.1.2-.2.3-.3.5-.1.2-.2.3-.1.5.1.2.5.8 1.1 1.4.7.7 1.3 1 1.5 1.1.2.1.4.1.5-.1.1-.2.5-.6.7-.8.2-.2.4-.3.6-.2l1.7.8c.2.1.4.2.5.4.1.3 0 .7-.3 1.1z" />
+    </svg>
+  )
+}
+
+type IconType = LucideIcon | typeof WhatsAppIcon
+
+const ICONS: Record<SocialPlatform, IconType> = {
   instagram: Instagram,
   threads: AtSign,
   linkedin: Linkedin,
   email: Mail,
-  whatsapp: Phone,
+  whatsapp: WhatsAppIcon,
+  calendar: Video,
   other: Link,
 }
 

@@ -77,6 +77,7 @@ export const bioSettings = defineType({
                   { title: 'LinkedIn', value: 'linkedin' },
                   { title: 'Email', value: 'email' },
                   { title: 'WhatsApp', value: 'whatsapp' },
+                  { title: 'Book a Call', value: 'calendar' },
                   { title: 'Other', value: 'other' },
                 ],
               },
