@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 export const LOCATION_MAP = {
-  ULUWATU: { label: 'Uluwatu', timezone: 'Asia/Makassar' },
+  ULUWATU: { label: 'Bali', timezone: 'Asia/Makassar' },
   MUNICH: { label: 'Munich', timezone: 'Europe/Berlin' },
 } as const
 
