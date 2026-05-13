@@ -7,6 +7,11 @@ on:
     - cron: '0 * * * *'   # rebuild every hour to pick up Sanity content changes
   workflow_dispatch:        # allow manual trigger from GitHub Actions UI
 
+# Only one deploy runs at a time. A newer run cancels any in-progress one.
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -33,7 +38,7 @@ jobs:
 
       # Push the contents of out/ to the deploy branch.
       # Hostinger Auto Deploy points to this branch and serves from its root.
-      # We maintain proper git history so Hostinger can fast-forward with a plain git pull.
+      # Force-push is safe here — this branch is fully machine-managed.
       - name: Push to deploy branch
         run: |
           git config user.name "github-actions[bot]"
@@ -55,4 +60,4 @@ jobs:
           cp -r /tmp/deploy-out/. .
           git add -A
           git diff --cached --quiet || git commit -m "deploy: ${{ github.sha }}"
-          git push origin deploy
+          git push --force origin deploy
