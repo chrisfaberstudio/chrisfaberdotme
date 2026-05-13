@@ -1,6 +1,8 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { useState, useEffect } from 'react'
 import { PortableText } from '@portabletext/react'
-import { sanityFetch } from '@/lib/sanity'
+import { browserClient } from '@/lib/sanity'
 import { bioSettingsQuery, galleryItemsQuery, gallery2ItemsQuery } from '@/lib/queries'
 import type { BioSettings, GalleryItem } from '@/lib/types'
 import { Portrait } from '@/components/Portrait'
@@ -9,14 +11,6 @@ import { Socials } from '@/components/Socials'
 import { Gallery } from '@/components/Gallery'
 import { Footer } from '@/components/Footer'
 import { MoreAboutButton } from '@/components/MoreAboutButton'
-
-export async function generateMetadata(): Promise<Metadata> {
-  const settings = await sanityFetch<BioSettings>(bioSettingsQuery)
-  return {
-    title: settings?.siteTitle ?? settings?.name ?? 'Chris Faber',
-    description: '',
-  }
-}
 
 const aboutComponents = {
   block: {
@@ -71,12 +65,25 @@ const bioComponents = {
   },
 }
 
-export default async function Home() {
-  const [settings, gallery, gallery2] = await Promise.all([
-    sanityFetch<BioSettings>(bioSettingsQuery),
-    sanityFetch<GalleryItem[]>(galleryItemsQuery),
-    sanityFetch<GalleryItem[]>(gallery2ItemsQuery),
-  ])
+export default function Home() {
+  const [settings, setSettings] = useState<BioSettings | null>(null)
+  const [gallery, setGallery] = useState<GalleryItem[]>([])
+  const [gallery2, setGallery2] = useState<GalleryItem[]>([])
+
+  useEffect(() => {
+    if (!browserClient) return
+    Promise.all([
+      browserClient.fetch<BioSettings>(bioSettingsQuery),
+      browserClient.fetch<GalleryItem[]>(galleryItemsQuery),
+      browserClient.fetch<GalleryItem[]>(gallery2ItemsQuery),
+    ]).then(([s, g, g2]) => {
+      setSettings(s)
+      setGallery(g ?? [])
+      setGallery2(g2 ?? [])
+    })
+  }, [])
+
+  if (!settings) return null
 
   return (
     <main
@@ -90,24 +97,24 @@ export default async function Home() {
           className="flex flex-col items-center gap-4 text-center animate-fade-up"
           style={{ animationDelay: '0ms' }}
         >
-          {settings?.portrait && (
+          {settings.portrait && (
             <Portrait image={settings.portrait} name={settings.name} />
           )}
           <div className="flex flex-col items-center gap-2">
             <h1 className="font-display text-[1.75rem] font-black text-ink leading-tight">
-              {settings?.name}
+              {settings.name}
             </h1>
             <p className="text-xs text-ink/60 font-mono tracking-widest uppercase">
-              {settings?.role}
+              {settings.role}
             </p>
-            {settings?.locationCode && (
+            {settings.locationCode && (
               <LocationPill code={settings.locationCode} />
             )}
           </div>
         </header>
 
         {/* Bio */}
-        {settings?.bio && (
+        {settings.bio && (
           <section
             className="animate-fade-up text-sm font-mono max-w-[44ch] mx-auto text-center"
             style={{ animationDelay: '80ms' }}
@@ -117,7 +124,7 @@ export default async function Home() {
         )}
 
         {/* More about me */}
-        {settings?.about && settings.about.length > 0 && (
+        {settings.about && settings.about.length > 0 && (
           <div
             className="animate-fade-up flex justify-center"
             style={{ animationDelay: '120ms' }}
@@ -127,7 +134,7 @@ export default async function Home() {
         )}
 
         {/* Socials */}
-        {settings?.socials && settings.socials.length > 0 && (
+        {settings.socials && settings.socials.length > 0 && (
           <section
             className="animate-fade-up w-full"
             style={{ animationDelay: '160ms' }}
@@ -136,8 +143,8 @@ export default async function Home() {
           </section>
         )}
 
-        {/* Gallery */}
-        {gallery && gallery.length > 0 && (
+        {/* Gallery 1 */}
+        {gallery.length > 0 && (
           <section
             className="animate-fade-up w-full"
             style={{ animationDelay: '240ms' }}
@@ -147,7 +154,7 @@ export default async function Home() {
         )}
 
         {/* About 1 */}
-        {settings?.about && settings.about.length > 0 && (
+        {settings.about && settings.about.length > 0 && (
           <section
             id="about"
             className="animate-fade-up w-full text-sm font-mono scroll-mt-16"
@@ -158,7 +165,7 @@ export default async function Home() {
         )}
 
         {/* Gallery 2 */}
-        {gallery2 && gallery2.length > 0 && (
+        {gallery2.length > 0 && (
           <section
             className="animate-fade-up w-full"
             style={{ animationDelay: '360ms' }}
@@ -168,7 +175,7 @@ export default async function Home() {
         )}
 
         {/* About 2 */}
-        {settings?.about2 && settings.about2.length > 0 && (
+        {settings.about2 && settings.about2.length > 0 && (
           <section
             className="animate-fade-up w-full text-sm font-mono"
             style={{ animationDelay: '400ms' }}
@@ -178,7 +185,7 @@ export default async function Home() {
         )}
 
         {/* Footer */}
-        <div className="animate-fade-up" style={{ animationDelay: '400ms' }}>
+        <div className="animate-fade-up" style={{ animationDelay: '440ms' }}>
           <Footer />
         </div>
 
