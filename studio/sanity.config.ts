@@ -27,6 +27,7 @@ export default defineConfig({
             S.divider(),
             orderableDocumentListDeskItem({ type: 'galleryItem', title: 'Gallery 1', S, context }),
             orderableDocumentListDeskItem({ type: 'galleryItem2', title: 'Gallery 2', S, context }),
+            orderableDocumentListDeskItem({ type: 'galleryItem3', title: 'Gallery 3', S, context }),
           ]),
     }),
     visionTool(),

@@ -25,3 +25,10 @@ export const gallery2ItemsQuery = `*[_type == "galleryItem2" && visible == true]
   "videoUrl": video.asset->url,
   caption
 }`
+
+export const gallery3ItemsQuery = `*[_type == "galleryItem3" && visible == true] | order(orderRank asc) {
+  _id,
+  image,
+  "videoUrl": video.asset->url,
+  caption
+}`

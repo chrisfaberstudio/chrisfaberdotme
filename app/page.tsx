@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { PortableText } from '@portabletext/react'
 import { browserClient } from '@/lib/sanity'
-import { bioSettingsQuery, galleryItemsQuery, gallery2ItemsQuery } from '@/lib/queries'
+import { bioSettingsQuery, galleryItemsQuery, gallery2ItemsQuery, gallery3ItemsQuery } from '@/lib/queries'
 import type { BioSettings, GalleryItem } from '@/lib/types'
 import { Portrait } from '@/components/Portrait'
 import { LocationPill } from '@/components/LocationPill'
@@ -69,6 +69,7 @@ export default function Home() {
   const [settings, setSettings] = useState<BioSettings | null>(null)
   const [gallery, setGallery] = useState<GalleryItem[]>([])
   const [gallery2, setGallery2] = useState<GalleryItem[]>([])
+  const [gallery3, setGallery3] = useState<GalleryItem[]>([])
 
   useEffect(() => {
     if (!browserClient) return
@@ -76,10 +77,12 @@ export default function Home() {
       browserClient.fetch<BioSettings>(bioSettingsQuery),
       browserClient.fetch<GalleryItem[]>(galleryItemsQuery),
       browserClient.fetch<GalleryItem[]>(gallery2ItemsQuery),
-    ]).then(([s, g, g2]) => {
+      browserClient.fetch<GalleryItem[]>(gallery3ItemsQuery),
+    ]).then(([s, g, g2, g3]) => {
       setSettings(s)
       setGallery(g ?? [])
       setGallery2(g2 ?? [])
+      setGallery3(g3 ?? [])
     })
   }, [])
 
@@ -184,8 +187,18 @@ export default function Home() {
           </section>
         )}
 
+        {/* Gallery 3 */}
+        {gallery3.length > 0 && (
+          <section
+            className="animate-fade-up w-full"
+            style={{ animationDelay: '440ms' }}
+          >
+            <Gallery items={gallery3} />
+          </section>
+        )}
+
         {/* Footer */}
-        <div className="animate-fade-up" style={{ animationDelay: '440ms' }}>
+        <div className="animate-fade-up" style={{ animationDelay: '480ms' }}>
           <Footer />
         </div>
 
