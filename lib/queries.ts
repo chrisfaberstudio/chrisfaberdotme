@@ -15,11 +15,13 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
 export const galleryItemsQuery = `*[_type == "galleryItem" && visible == true] | order(orderRank asc) {
   _id,
   image,
+  "videoUrl": video.asset->url,
   caption
 }`
 
 export const gallery2ItemsQuery = `*[_type == "galleryItem2" && visible == true] | order(orderRank asc) {
   _id,
   image,
+  "videoUrl": video.asset->url,
   caption
 }`

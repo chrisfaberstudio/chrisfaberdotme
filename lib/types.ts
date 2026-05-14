@@ -45,6 +45,7 @@ export interface BioSettings {
 
 export interface GalleryItem {
   _id: string
-  image: SanityImage
+  image?: SanityImage
+  videoUrl?: string
   caption?: string
 }

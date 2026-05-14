@@ -14,7 +14,14 @@ export const galleryItem2 = defineType({
       title: 'Image',
       type: 'image',
       options: { hotspot: true },
-      validation: (R) => R.required(),
+      description: 'Upload an image. Use either Image or Video — not both.',
+    }),
+    defineField({
+      name: 'video',
+      title: 'Video',
+      type: 'file',
+      description: 'Upload a video. It will loop silently. Use either Image or Video — not both.',
+      options: { accept: 'video/*' },
     }),
     defineField({
       name: 'caption',
