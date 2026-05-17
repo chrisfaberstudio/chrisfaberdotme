@@ -110,7 +110,7 @@ export default function Home() {
             <p className="text-xs text-ink/60 font-mono tracking-widest uppercase">
               {settings.role}
             </p>
-            {settings.locationCode && (
+            {settings.locationCode && settings.showLocationClock !== false && (
               <LocationPill code={settings.locationCode} />
             )}
           </div>

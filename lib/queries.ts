@@ -5,6 +5,7 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   portrait,
   bio,
   locationCode,
+  showLocationClock,
   socials,
   about,
   about2,

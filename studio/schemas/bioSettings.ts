@@ -59,6 +59,14 @@ export const bioSettings = defineType({
     }),
 
     defineField({
+      name: 'showLocationClock',
+      title: 'Show Location Clock',
+      type: 'boolean',
+      description: 'Toggle the location & time display below the name.',
+      initialValue: true,
+    }),
+
+    defineField({
       name: 'socials',
       title: 'Socials',
       type: 'array',

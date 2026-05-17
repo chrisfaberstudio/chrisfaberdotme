@@ -37,6 +37,7 @@ export interface BioSettings {
   about?: Array<{ _type: string; [key: string]: unknown }>
   about2?: Array<{ _type: string; [key: string]: unknown }>
   locationCode: LocationCode
+  showLocationClock?: boolean
   socials: Social[]
   imprint?: Array<{ _type: string; [key: string]: unknown }>
   dataPrivacy?: Array<{ _type: string; [key: string]: unknown }>
