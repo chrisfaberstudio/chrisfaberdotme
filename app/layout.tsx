@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: 'Chris Faber',
     template: '%s · Chris Faber',
   },
-  description: 'Computergraphics artist based between Uluwatu and Munich.',
+  description: 'Computer Graphics Artist – Exploring the beauty of form, surface and light.',
   metadataBase: new URL('https://chrisfaber.me'),
   icons: {
     icon: [
