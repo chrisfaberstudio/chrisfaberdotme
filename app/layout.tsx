@@ -30,6 +30,12 @@ export const metadata: Metadata = {
   },
   description: 'Computergraphics artist based between Uluwatu and Munich.',
   metadataBase: new URL('https://chrisfaber.me'),
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/icon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
