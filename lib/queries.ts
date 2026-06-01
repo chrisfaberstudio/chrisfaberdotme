@@ -3,6 +3,7 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   siteTitle,
   role,
   portrait,
+  metaDescription,
   favicon,
   ogImage,
   bio,
@@ -18,6 +19,7 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
 export const seoSettingsQuery = `*[_type == "bioSettings"][0] {
   name,
   siteTitle,
+  metaDescription,
   favicon,
   ogImage
 }`

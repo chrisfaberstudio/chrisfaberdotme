@@ -26,6 +26,15 @@ export const bioSettings = defineType({
     }),
 
     defineField({
+      name: 'metaDescription',
+      title: 'Meta Description',
+      type: 'text',
+      rows: 2,
+      description: 'Short description shown in Google search results (≤ 160 characters recommended). Takes effect on the next deploy.',
+      validation: (R) => R.max(160),
+    }),
+
+    defineField({
       name: 'favicon',
       title: 'Favicon',
       type: 'image',

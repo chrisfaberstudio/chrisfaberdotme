@@ -30,6 +30,7 @@ const robotoMono = Roboto_Mono({
 interface SeoSettings {
   name?: string
   siteTitle?: string
+  metaDescription?: string
   favicon?: SanityImage
   ogImage?: SanityImage
 }
@@ -52,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
       default: siteName,
       template: `%s · ${siteName}`,
     },
-    description: 'Computer Graphics Artist – Exploring the beauty of form, surface and light.',
+    description: seo?.metaDescription || 'Computer Graphics Artist – Exploring the beauty of form, surface and light.',
     metadataBase: new URL('https://chrisfaber.me'),
     icons: {
       icon: faviconUrl
