@@ -3,6 +3,8 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   siteTitle,
   role,
   portrait,
+  favicon,
+  ogImage,
   bio,
   locationCode,
   showLocationClock,
@@ -11,6 +13,13 @@ export const bioSettingsQuery = `*[_type == "bioSettings"][0] {
   about2,
   imprint,
   dataPrivacy
+}`
+
+export const seoSettingsQuery = `*[_type == "bioSettings"][0] {
+  name,
+  siteTitle,
+  favicon,
+  ogImage
 }`
 
 export const galleryItemsQuery = `*[_type == "galleryItem" && visible == true] | order(orderRank asc) {

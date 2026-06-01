@@ -26,6 +26,22 @@ export const bioSettings = defineType({
     }),
 
     defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'image',
+      description: 'Browser tab & search-result icon. Use a square image, at least 256×256 px. Takes effect on the next deploy.',
+      options: { hotspot: false },
+    }),
+
+    defineField({
+      name: 'ogImage',
+      title: 'Social Share Image',
+      type: 'image',
+      description: 'Preview image shown when sharing the link on social media (1200×630 px recommended). Takes effect on the next deploy.',
+      options: { hotspot: true },
+    }),
+
+    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'array',

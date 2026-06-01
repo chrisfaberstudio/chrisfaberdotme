@@ -33,6 +33,8 @@ export interface BioSettings {
   siteTitle?: string
   role: string
   portrait: SanityImage
+  favicon?: SanityImage
+  ogImage?: SanityImage
   bio: Array<{ _type: string; [key: string]: unknown }>
   about?: Array<{ _type: string; [key: string]: unknown }>
   about2?: Array<{ _type: string; [key: string]: unknown }>
