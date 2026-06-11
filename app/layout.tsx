@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL('https://chrisfaber.me'),
     icons: {
       icon: faviconUrl
-        ? [{ url: faviconUrl }, { url: '/icon.svg', type: 'image/svg+xml' }]
+        ? [{ url: faviconUrl, type: 'image/png', sizes: '256x256' }]
         : [{ url: '/icon.svg', type: 'image/svg+xml' }],
       shortcut: faviconUrl ?? '/icon.svg',
     },
