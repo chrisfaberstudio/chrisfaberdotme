@@ -8,7 +8,11 @@
       "Bash(where npx:*)",
       "Bash(where py:*)",
       "Bash(cmd /c \"where python 2>nul; where python3 2>nul; where node 2>nul; where npx 2>nul; where py 2>nul; where php 2>nul\")",
-      "Bash(cmd /c \"dir C:\\\\Python* /b 2>nul; dir C:\\\\Program Files\\\\nodejs\\\\node.exe 2>nul; dir C:\\\\Users\\\\cmrfa\\\\AppData\\\\Local\\\\Programs\\\\Python 2>nul; dir C:\\\\Users\\\\cmrfa\\\\AppData\\\\Roaming\\\\npm\\\\npx.cmd 2>nul; dir C:\\\\Program Files\\\\nodejs 2>nul\")"
+      "Bash(cmd /c \"dir C:\\\\Python* /b 2>nul; dir C:\\\\Program Files\\\\nodejs\\\\node.exe 2>nul; dir C:\\\\Users\\\\cmrfa\\\\AppData\\\\Local\\\\Programs\\\\Python 2>nul; dir C:\\\\Users\\\\cmrfa\\\\AppData\\\\Roaming\\\\npm\\\\npx.cmd 2>nul; dir C:\\\\Program Files\\\\nodejs 2>nul\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npx sanity *)",
+      "Bash(/c/Users/cmrfa/node/npx sanity *)"
     ]
   }
 }
