@@ -1,29 +1,34 @@
 import type { Metadata } from 'next'
-import { Inter, Lato, Roboto_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { sanityFetch } from '@/lib/sanity'
 import { urlFor } from '@/lib/sanityImage'
 import { seoSettingsQuery } from '@/lib/queries'
 import type { SanityImage } from '@/lib/types'
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: [
+    { path: '../public/fonts/inter-400.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/inter-500.woff2', weight: '500', style: 'normal' },
+  ],
   variable: '--font-inter',
-  weight: ['400', '500'],
   display: 'swap',
 })
 
-const lato = Lato({
-  subsets: ['latin'],
+const lato = localFont({
+  src: [
+    { path: '../public/fonts/lato-700.woff2', weight: '700', style: 'normal' },
+  ],
   variable: '--font-lato',
-  weight: ['700'],
   display: 'swap',
 })
 
-const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
+const robotoMono = localFont({
+  src: [
+    { path: '../public/fonts/roboto-mono-400.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/roboto-mono-500.woff2', weight: '500', style: 'normal' },
+  ],
   variable: '--font-roboto-mono',
-  weight: ['400', '500'],
   display: 'swap',
 })
 
